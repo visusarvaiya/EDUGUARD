@@ -1,4 +1,4 @@
-# AcadWatch - Complete File Directory & Structure
+# EDUGUARD - Complete File Directory & Structure
 
 ## 📂 Full Project Directory Tree
 

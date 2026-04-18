@@ -1,4 +1,4 @@
-# AcadWatch - Testing Guide
+# EDUGUARD - Testing Guide
 
 ## 🧪 Testing Strategy
 

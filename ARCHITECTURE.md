@@ -1,4 +1,4 @@
-# AcadWatch - System Architecture
+# EDUGUARD - System Architecture
 
 ## 📐 High-Level Architecture
 

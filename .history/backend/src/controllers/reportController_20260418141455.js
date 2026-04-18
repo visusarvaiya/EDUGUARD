@@ -20,7 +20,7 @@ const generatePDFReport = async (req, res) => {
 
     const doc = new jsPDF();
     doc.setFontSize(16);
-    doc.text('AcadWatch Risk Report', 20, 20);
+    doc.text('EDUGUARD Risk Report', 20, 20);
 
     doc.setFontSize(12);
     doc.text(`Student: ${student.userId.name}`, 20, 40);
@@ -92,7 +92,7 @@ const generateCSVExport = async (req, res) => {
     }
 
     res.setHeader('Content-Type', 'text/csv');
-    res.setHeader('Content-Disposition', 'attachment; filename="acadwatch_report.csv"');
+    res.setHeader('Content-Disposition', 'attachment; filename="EDUGUARD_report.csv"');
     res.send(csv);
   } catch (error) {
     res.status(500).json({ error: error.message });

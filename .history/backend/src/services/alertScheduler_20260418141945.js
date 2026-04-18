@@ -47,7 +47,7 @@ const startAlertScheduler = () => {
                 <li>Marks: ${latestRisk.marksRisk.toFixed(0)} risk points</li>
                 <li>Assignments: ${latestRisk.assignmentRisk.toFixed(0)} risk points</li>
               </ul>
-              <p>Please log in to AcadWatch and take immediate action.</p>
+              <p>Please log in to EDUGUARD and take immediate action.</p>
             `;
 
             await sendEmail(

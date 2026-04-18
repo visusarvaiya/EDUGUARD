@@ -33,11 +33,21 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const response = await authAPI.login(email, password, role);
+      const response = await authAPI.login(email.trim(), password.trim(), role);
       setUserId(response.data.userId);
 
       if (response.data.requiresOTP) {
         setShowOTPModal(true);
+      } else if (response.data.token && response.data.user) {
+        // Direct login for verified accounts
+        login(response.data.user, response.data.token);
+        const dashboardRoutes = {
+          Student: '/student/dashboard',
+          'Faculty Mentor': '/mentor/dashboard',
+          'Subject Teacher': '/teacher/dashboard',
+          'Academic Coordinator': '/coordinator/dashboard',
+        };
+        navigate(dashboardRoutes[response.data.user.role]);
       }
     } catch (error) {
       setGeneralError(error.response?.data?.error || 'Login failed');
@@ -73,14 +83,14 @@ const Login = () => {
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-50 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         {/* Card */}
-        <div className="bg-white rounded-lg shadow-lg p-8">
+        <div className="glass-card rounded-2xl p-8 mb-6">
           {/* Logo */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-4">
               <GraduationCap className="w-8 h-8 text-indigo-600" />
-              <span className="text-2xl font-bold text-gray-900">AcadWatch</span>
+              <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">EDUGUARD</span>
             </div>
-            <p className="text-gray-600 text-sm">Early Academic Risk Detection</p>
+            <p className="text-gray-600 text-sm font-medium">Early Academic Risk Detection</p>
           </div>
 
           {!showOTPModal ? (
@@ -97,7 +107,7 @@ const Login = () => {
                       setEmail(e.target.value);
                       setEmailError('');
                     }}
-                    className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
+                    className={`w-full pl-10 pr-4 py-2 bg-white/50 border rounded-lg focus:outline-none focus:ring-2 ${
                       emailError
                         ? 'border-red-500 focus:ring-red-500'
                         : 'border-gray-300 focus:ring-indigo-500'
@@ -117,7 +127,7 @@ const Login = () => {
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full pl-10 pr-10 py-2 bg-white/50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     placeholder="••••••••"
                   />
                   <button
@@ -136,7 +146,7 @@ const Login = () => {
                 <select
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-4 py-2 bg-white/50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 >
                   <option>Student</option>
                   <option>Faculty Mentor</option>
@@ -147,7 +157,7 @@ const Login = () => {
 
               {/* Error Message */}
               {generalError && (
-                <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                <div className="p-3 bg-red-50/80 border border-red-200 rounded-lg">
                   <p className="text-red-600 text-sm">{generalError}</p>
                 </div>
               )}
@@ -156,17 +166,17 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition disabled:opacity-50 font-semibold"
+                className="btn-primary w-full mt-4"
               >
                 {loading ? 'Logging in...' : 'Login'}
               </button>
 
               {/* Forgot Password Link */}
-              <div className="text-center">
+              <div className="text-center mt-2">
                 <button
                   type="button"
                   onClick={() => alert('Check your email for password reset link')}
-                  className="text-indigo-600 hover:text-indigo-700 text-sm"
+                  className="text-indigo-600 hover:text-indigo-700 text-sm font-medium"
                 >
                   Forgot Password?
                 </button>
@@ -187,14 +197,14 @@ const Login = () => {
                   onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
                   placeholder="000000"
                   maxLength="6"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-center text-2xl tracking-widest"
+                  className="w-full px-4 py-2 bg-white/50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-center text-2xl tracking-widest font-mono"
                   autoFocus
                 />
               </div>
 
               {/* Error Message */}
               {generalError && (
-                <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                <div className="p-3 bg-red-50/80 border border-red-200 rounded-lg">
                   <p className="text-red-600 text-sm">{generalError}</p>
                 </div>
               )}
@@ -203,7 +213,7 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={loading || otp.length !== 6}
-                className="w-full py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition disabled:opacity-50 font-semibold"
+                className="btn-primary w-full"
               >
                 {loading ? 'Verifying...' : 'Verify OTP'}
               </button>
@@ -216,7 +226,7 @@ const Login = () => {
                   setOtp('');
                   setGeneralError('');
                 }}
-                className="w-full py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition"
+                className="btn-outline w-full mt-2"
               >
                 Back to Login
               </button>
@@ -225,12 +235,15 @@ const Login = () => {
         </div>
 
         {/* Demo Credentials Info */}
-        <div className="mt-8 bg-blue-50 rounded-lg p-4 border border-blue-200">
-          <p className="text-blue-900 text-sm font-semibold mb-2">📝 Demo Credentials:</p>
-          <p className="text-blue-700 text-xs mb-1">
-            <strong>Any email</strong> (e.g., student123@acadwatch.edu)
-          </p>
-          <p className="text-blue-700 text-xs">
+        <div className="glass-card rounded-xl p-5 border-l-4 border-l-indigo-500">
+          <p className="text-indigo-900 text-sm font-semibold mb-3">🚀 Easy Test Logins:</p>
+          <ul className="text-gray-700 text-sm space-y-1 mb-2 list-none">
+            <li><strong>Student:</strong> student@eduguard.com</li>
+            <li><strong>Mentor:</strong> mentor@eduguard.com</li>
+            <li><strong>Teacher:</strong> teacher@eduguard.com</li>
+            <li><strong>Coordinator:</strong> coordinator@eduguard.com</li>
+          </ul>
+          <p className="text-indigo-800 text-sm mt-3 border-t border-indigo-100 pt-2">
             <strong>Password:</strong> password123
           </p>
         </div>

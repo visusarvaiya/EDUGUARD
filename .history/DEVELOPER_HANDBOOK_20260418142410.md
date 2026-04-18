@@ -1,6 +1,6 @@
-# AcadWatch - Developer Handbook
+# EDUGUARD - Developer Handbook
 
-Welcome to the AcadWatch development team! This handbook covers everything you need to know to contribute effectively to the project.
+Welcome to the EDUGUARD development team! This handbook covers everything you need to know to contribute effectively to the project.
 
 ---
 
@@ -18,7 +18,7 @@ Welcome to the AcadWatch development team! This handbook covers everything you n
 
 ## 🎯 Project Overview
 
-**AcadWatch** is an Early Academic Risk Detection and Student Intervention Platform for universities and colleges.
+**EDUGUARD** is an Early Academic Risk Detection and Student Intervention Platform for universities and colleges.
 
 ### Core Features
 - **Risk Scoring**: ML-based algorithm predicting student dropout risk (0-100 scale)
@@ -55,8 +55,8 @@ Welcome to the AcadWatch development team! This handbook covers everything you n
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/acadwatch/acadwatch.git
-cd acadwatch
+git clone https://github.com/EDUGUARD/EDUGUARD.git
+cd EDUGUARD
 
 # 2. Backend setup
 cd backend
@@ -90,7 +90,7 @@ npm run seed
 ```
 PORT=5000
 NODE_ENV=development
-MONGODB_URI=mongodb://localhost:27017/acadwatch
+MONGODB_URI=mongodb://localhost:27017/EDUGUARD
 REDIS_URL=redis://localhost:6379
 JWT_SECRET=your-secret-key
 JWT_EXPIRY=7d
@@ -98,7 +98,7 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
-EMAIL_FROM=noreply@acadwatch.com
+EMAIL_FROM=noreply@EDUGUARD.com
 ```
 
 **Frontend (.env):**

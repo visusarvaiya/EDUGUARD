@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Menu, X, LogOut, Bell, Settings, GraduationCap } from 'lucide-react';
+import { Menu, X, LogOut, Bell, GraduationCap } from 'lucide-react';
 import { useAuth } from '../services/authContext';
-import { alertAPI } from '../services/api';
 
 const DashboardLayout = ({ children }) => {
   const navigate = useNavigate();
@@ -98,7 +97,7 @@ const DashboardLayout = ({ children }) => {
         <div className="p-6 border-b border-slate-700">
           <div className="flex items-center gap-2">
             <GraduationCap className="w-6 h-6" />
-            <span className="text-lg font-bold">AcadWatch</span>
+            <span className="text-lg font-bold">EDUGUARD</span>
           </div>
         </div>
 

@@ -8,7 +8,6 @@ module.exports = {
     extend: {
       colors: {
         navy: '#0F172A',
-        indigo: '#6366F1',
       },
     },
   },

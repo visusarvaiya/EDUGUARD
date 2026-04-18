@@ -1,4 +1,4 @@
-# AcadWatch - Deployment Guide
+# EDUGUARD - Deployment Guide
 
 ## 🌍 Production Deployment
 
@@ -29,11 +29,11 @@ heroku login
 cd backend
 
 # Create Heroku app
-heroku create acadwatch-backend
+heroku create EDUGUARD-backend
 
 # Set environment variables
 heroku config:set \
-  MONGODB_URI="mongodb+srv://user:pass@cluster.mongodb.net/acadwatch?retryWrites=true&w=majority" \
+  MONGODB_URI="mongodb+srv://user:pass@cluster.mongodb.net/EDUGUARD?retryWrites=true&w=majority" \
   REDIS_URL="redis://:password@host:port" \
   JWT_SECRET="your-super-secret-key" \
   SMTP_HOST="smtp.sendgrid.net" \
@@ -64,7 +64,7 @@ npm install -g vercel
 vercel
 
 # During deployment, set:
-# REACT_APP_API_URL = https://acadwatch-backend.herokuapp.com/api
+# REACT_APP_API_URL = https://EDUGUARD-backend.herokuapp.com/api
 
 # View deployment
 vercel --prod
@@ -112,7 +112,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN REACT_APP_API_URL=https://api.acadwatch.com npm run build
+RUN REACT_APP_API_URL=https://api.EDUGUARD.com npm run build
 
 FROM nginx:alpine
 COPY --from=builder /app/build /usr/share/nginx/html
@@ -151,7 +151,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      MONGODB_URI: mongodb://admin:password@mongodb:27017/acadwatch?authSource=admin
+      MONGODB_URI: mongodb://admin:password@mongodb:27017/EDUGUARD?authSource=admin
       REDIS_URL: redis://redis:6379
       JWT_SECRET: dev-secret
       SMTP_HOST: smtp.mailtrap.io
@@ -202,12 +202,12 @@ docker-compose down
 
 ```bash
 # Build images
-docker build -t yourusername/acadwatch-backend:1.0.0 ./backend
-docker build -t yourusername/acadwatch-frontend:1.0.0 ./frontend
+docker build -t yourusername/EDUGUARD-backend:1.0.0 ./backend
+docker build -t yourusername/EDUGUARD-frontend:1.0.0 ./frontend
 
 # Push to Docker Hub
-docker push yourusername/acadwatch-backend:1.0.0
-docker push yourusername/acadwatch-frontend:1.0.0
+docker push yourusername/EDUGUARD-backend:1.0.0
+docker push yourusername/EDUGUARD-frontend:1.0.0
 ```
 
 ### Kubernetes Manifests
@@ -217,39 +217,39 @@ docker push yourusername/acadwatch-frontend:1.0.0
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: acadwatch-backend
+  name: EDUGUARD-backend
   labels:
-    app: acadwatch
+    app: EDUGUARD
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: acadwatch-backend
+      app: EDUGUARD-backend
   template:
     metadata:
       labels:
-        app: acadwatch-backend
+        app: EDUGUARD-backend
     spec:
       containers:
       - name: backend
-        image: yourusername/acadwatch-backend:1.0.0
+        image: yourusername/EDUGUARD-backend:1.0.0
         ports:
         - containerPort: 5000
         env:
         - name: MONGODB_URI
           valueFrom:
             secretKeyRef:
-              name: acadwatch-secrets
+              name: EDUGUARD-secrets
               key: mongodb-uri
         - name: REDIS_URL
           valueFrom:
             secretKeyRef:
-              name: acadwatch-secrets
+              name: EDUGUARD-secrets
               key: redis-url
         - name: JWT_SECRET
           valueFrom:
             secretKeyRef:
-              name: acadwatch-secrets
+              name: EDUGUARD-secrets
               key: jwt-secret
         livenessProbe:
           httpGet:
@@ -275,10 +275,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: acadwatch-backend-service
+  name: EDUGUARD-backend-service
 spec:
   selector:
-    app: acadwatch-backend
+    app: EDUGUARD-backend
   type: LoadBalancer
   ports:
   - protocol: TCP
@@ -290,7 +290,7 @@ spec:
 
 ```bash
 # Create secrets
-kubectl create secret generic acadwatch-secrets \
+kubectl create secret generic EDUGUARD-secrets \
   --from-literal=mongodb-uri="mongodb+srv://..." \
   --from-literal=redis-url="redis://..." \
   --from-literal=jwt-secret="your-secret"
@@ -304,10 +304,10 @@ kubectl get pods
 kubectl get svc
 
 # View logs
-kubectl logs -f deployment/acadwatch-backend
+kubectl logs -f deployment/EDUGUARD-backend
 
 # Scale up
-kubectl scale deployment acadwatch-backend --replicas=5
+kubectl scale deployment EDUGUARD-backend --replicas=5
 ```
 
 ---
@@ -399,7 +399,7 @@ upstream backend {
 
 server {
   listen 443 ssl http2;
-  server_name api.acadwatch.com;
+  server_name api.EDUGUARD.com;
 
   ssl_certificate /etc/ssl/certs/certificate.crt;
   ssl_certificate_key /etc/ssl/private/key.key;
@@ -434,7 +434,7 @@ server {
 
 ```yaml
 # .github/workflows/deploy.yml
-name: Deploy AcadWatch
+name: Deploy EDUGUARD
 
 on:
   push:
@@ -458,8 +458,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Docker images
         run: |
-          docker build -t acadwatch-backend:latest ./backend
-          docker build -t acadwatch-frontend:latest ./frontend
+          docker build -t EDUGUARD-backend:latest ./backend
+          docker build -t EDUGUARD-frontend:latest ./frontend
 
   deploy:
     needs: build
@@ -470,8 +470,8 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          heroku container:push web -a acadwatch-backend
-          heroku container:release web -a acadwatch-backend
+          heroku container:push web -a EDUGUARD-backend
+          heroku container:release web -a EDUGUARD-backend
 ```
 
 ---
@@ -487,7 +487,7 @@ const ElasticsearchTransport = require('winston-elasticsearch');
 logger.add(new ElasticsearchTransport({
   level: 'info',
   clientOpts: { host: 'elasticsearch:9200' },
-  index: 'acadwatch-logs',
+  index: 'EDUGUARD-logs',
 }));
 ```
 
@@ -510,10 +510,10 @@ logger.add(new ElasticsearchTransport({
 mongodump --uri="mongodb+srv://user:pass@..." --out=/backups/daily/$(date +%Y%m%d)
 
 # Weekly full backup
-tar -czf /backups/weekly/acadwatch-full-$(date +%Y%m%d).tar.gz /backups/daily/
+tar -czf /backups/weekly/EDUGUARD-full-$(date +%Y%m%d).tar.gz /backups/daily/
 
 # Store in S3 (30 days retention)
-aws s3 sync /backups s3://acadwatch-backups/
+aws s3 sync /backups s3://EDUGUARD-backups/
 ```
 
 ### Recovery Procedure

@@ -1,4 +1,4 @@
-# AcadWatch - Complete API Reference
+# EDUGUARD - Complete API Reference
 
 ## 🔐 Authentication
 
@@ -475,7 +475,7 @@ Authorization: Bearer <token>
 
 **Response:**
 - File download (application/pdf)
-- Filename: `acadwatch-report-{studentId}-{date}.pdf`
+- Filename: `EDUGUARD-report-{studentId}-{date}.pdf`
 
 **Content includes:**
 - Student profile
@@ -499,7 +499,7 @@ Authorization: Bearer <token>
 
 **Response:**
 - File download (text/csv)
-- Filename: `acadwatch-export-{department}-{date}.csv`
+- Filename: `EDUGUARD-export-{department}-{date}.csv`
 
 **Columns:**
 - Student ID
@@ -518,8 +518,8 @@ Authorization: Bearer <token>
 
 ### OTP Verification Email
 ```
-Subject: Your AcadWatch OTP Verification Code
-From: noreply@acadwatch.com
+Subject: Your EDUGUARD OTP Verification Code
+From: noreply@EDUGUARD.com
 
 Your OTP: 123456
 Valid for: 10 minutes
@@ -528,7 +528,7 @@ Valid for: 10 minutes
 ### High Risk Alert Email
 ```
 Subject: High Risk Alert - Immediate Action Required
-From: alerts@acadwatch.com
+From: alerts@EDUGUARD.com
 
 Student: John Doe
 Risk Score: 72/100 (High Risk)
@@ -539,7 +539,7 @@ Action: Please meet with the student to discuss intervention plan
 ### Intervention Logged Email
 ```
 Subject: Your Mentor Logged an Intervention
-From: noreply@acadwatch.com
+From: noreply@EDUGUARD.com
 
 Intervention Type: Counselling
 Date: 2024-01-15
@@ -652,7 +652,7 @@ curl -X POST http://localhost:5000/api/risk/simulate \
 
 ### Postman Collection
 
-Import `AcadWatch.postman_collection.json` to Postman:
+Import `EDUGUARD.postman_collection.json` to Postman:
 1. Create collection
 2. Add requests for each endpoint
 3. Set up environment variables: `{{base_url}}`, `{{token}}`
@@ -662,4 +662,4 @@ Import `AcadWatch.postman_collection.json` to Postman:
 
 **API Version**: 1.0.0  
 **Last Updated**: 2024-01-15  
-**Maintained By**: AcadWatch Dev Team
+**Maintained By**: EDUGUARD Dev Team

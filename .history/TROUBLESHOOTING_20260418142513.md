@@ -1,4 +1,4 @@
-# AcadWatch - Troubleshooting Guide
+# EDUGUARD - Troubleshooting Guide
 
 ## 🆘 Common Issues & Solutions
 
@@ -18,9 +18,9 @@ brew services start mongodb-community
 
 # 2. Incorrect connection string
 # Check .env file - should be:
-MONGODB_URI=mongodb://localhost:27017/acadwatch
+MONGODB_URI=mongodb://localhost:27017/EDUGUARD
 # Or for Atlas:
-MONGODB_URI=mongodb+srv://user:password@cluster.mongodb.net/acadwatch
+MONGODB_URI=mongodb+srv://user:password@cluster.mongodb.net/EDUGUARD
 
 # 3. Network issue
 ping localhost

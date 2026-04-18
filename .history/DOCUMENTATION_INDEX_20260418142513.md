@@ -1,6 +1,6 @@
-# AcadWatch Documentation Index
+# EDUGUARD Documentation Index
 
-Welcome to AcadWatch documentation! This page serves as a comprehensive guide to all project documentation.
+Welcome to EDUGUARD documentation! This page serves as a comprehensive guide to all project documentation.
 
 ---
 
@@ -277,7 +277,7 @@ cd frontend && npm install && npm start     # Terminal 2
 
 ## 📈 Documentation Maintenance
 
-This documentation is maintained by the AcadWatch development team. 
+This documentation is maintained by the EDUGUARD development team. 
 
 **To Update Documentation:**
 1. Make changes to relevant .md files
@@ -360,7 +360,7 @@ Found an issue or want to improve docs?
 ---
 
 **Last Updated**: January 2024  
-**Maintained By**: AcadWatch Development Team  
+**Maintained By**: EDUGUARD Development Team  
 **Latest Version**: 1.0.0
 
 ---

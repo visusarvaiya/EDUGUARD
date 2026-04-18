@@ -31,3 +31,4 @@ build/
 # OS
 Thumbs.db
 .DS_Store
+\n.history/\n.history\n

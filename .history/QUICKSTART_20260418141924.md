@@ -1,4 +1,4 @@
-# AcadWatch - Quick Start in 5 Minutes
+# EDUGUARD - Quick Start in 5 Minutes
 
 ## Prerequisites
 - Node.js v16+ installed
@@ -16,14 +16,14 @@ npm install
 # Create .env file with database credentials
 cat > .env << 'EOF'
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/acadwatch
+MONGODB_URI=mongodb://localhost:27017/EDUGUARD
 REDIS_URL=redis://localhost:6379
-JWT_SECRET=acadwatch_dev_secret_2024
+JWT_SECRET=EDUGUARD_dev_secret_2024
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your_email@gmail.com
 SMTP_PASS=your_app_password
-EMAIL_FROM=noreply@acadwatch.com
+EMAIL_FROM=noreply@EDUGUARD.com
 NODE_ENV=development
 EOF
 
@@ -51,16 +51,16 @@ Visit **http://localhost:3000** and login with:
 
 | Role | Email | Password |
 |------|-------|----------|
-| Student | `student123@acadwatch.edu` | `password123` |
-| Mentor | `mentor.computerengineering@acadwatch.edu` | `password123` |
-| Teacher | `teacher1.computerengineering@acadwatch.edu` | `password123` |
-| Coordinator | `coordinator.computerengineering@acadwatch.edu` | `password123` |
+| Student | `student123@EDUGUARD.edu` | `password123` |
+| Mentor | `mentor.computerengineering@EDUGUARD.edu` | `password123` |
+| Teacher | `teacher1.computerengineering@EDUGUARD.edu` | `password123` |
+| Coordinator | `coordinator.computerengineering@EDUGUARD.edu` | `password123` |
 
 First login requires OTP verification via email.
 
 ## 🎉 Done!
 
-You now have a fully functional AcadWatch instance with:
+You now have a fully functional EDUGUARD instance with:
 - ✅ 360+ seeded students
 - ✅ 12 departments
 - ✅ Pre-logged interventions
@@ -107,7 +107,7 @@ sudo systemctl start redis-server
 2. Create [Redis Cloud](https://redis.com/cloud/) database (free trial)
 3. Update `.env` with URIs:
    ```
-   MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/acadwatch
+   MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/EDUGUARD
    REDIS_URL=redis://user:pass@host:port
    ```
 

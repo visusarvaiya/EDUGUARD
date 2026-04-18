@@ -39,7 +39,7 @@ const logIntervention = async (req, res) => {
       <p>Please follow up with your mentor for more details.</p>
     `;
 
-    await sendEmail(student.userId.email, 'AcadWatch Intervention Logged', emailHtml);
+    await sendEmail(student.userId.email, 'EDUGUARD Intervention Logged', emailHtml);
 
     res.status(201).json(intervention);
   } catch (error) {

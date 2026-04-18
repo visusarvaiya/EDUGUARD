@@ -1,6 +1,6 @@
 const AcademicData = require('../models/AcademicData');
 const RiskScore = require('../models/RiskScore');
-const { redisClient } = require('./database');
+const { redisClient } = require('../config/database');
 
 const calculateRiskScore = async (studentId) => {
   try {

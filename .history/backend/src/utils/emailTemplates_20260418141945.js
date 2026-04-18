@@ -18,21 +18,21 @@ const templates = {
     <body>
       <div class="container">
         <div class="header">
-          <h1 style="margin: 0;">AcadWatch</h1>
+          <h1 style="margin: 0;">EDUGUARD</h1>
           <p style="margin: 5px 0 0 0; opacity: 0.9;">Email Verification</p>
         </div>
         <div class="content">
           <p>Hello ${name},</p>
-          <p>Welcome to AcadWatch! Your one-time password for account verification is:</p>
+          <p>Welcome to EDUGUARD! Your one-time password for account verification is:</p>
           <div class="otp-box">
             <div class="otp-code">${otp}</div>
           </div>
           <p style="color: #6b7280; font-size: 14px;">This code expires in <strong>10 minutes</strong>. Do not share this code with anyone.</p>
           <p>If you didn't request this, please ignore this email.</p>
-          <p>Best regards,<br>The AcadWatch Team</p>
+          <p>Best regards,<br>The EDUGUARD Team</p>
         </div>
         <div class="footer">
-          <p>&copy; 2024 AcadWatch. All rights reserved.</p>
+          <p>&copy; 2024 EDUGUARD. All rights reserved.</p>
         </div>
       </div>
     </body>
@@ -66,7 +66,7 @@ const templates = {
           <ul>
             ${reasons.map(r => `<li>${r}</li>`).join('')}
           </ul>
-          <p style="color: #6b7280; font-size: 14px;">Please log in to AcadWatch and take immediate action to support this student.</p>
+          <p style="color: #6b7280; font-size: 14px;">Please log in to EDUGUARD and take immediate action to support this student.</p>
         </div>
       </div>
     </body>

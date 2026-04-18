@@ -98,7 +98,7 @@ const DashboardLayout = ({ children }) => {
         <div className="p-6 border-b border-slate-700">
           <div className="flex items-center gap-2">
             <GraduationCap className="w-6 h-6" />
-            <span className="text-lg font-bold">AcadWatch</span>
+            <span className="text-lg font-bold">EDUGUARD</span>
           </div>
         </div>
 

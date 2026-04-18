@@ -1,7 +1,7 @@
 {
-  "name": "acadwatch-backend",
+  "name": "EDUGUARD-backend",
   "version": "1.0.0",
-  "description": "AcadWatch Backend - Early Academic Risk Detection",
+  "description": "EDUGUARD Backend - Early Academic Risk Detection",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",

@@ -78,7 +78,7 @@ const Login = () => {
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-4">
               <GraduationCap className="w-8 h-8 text-indigo-600" />
-              <span className="text-2xl font-bold text-gray-900">AcadWatch</span>
+              <span className="text-2xl font-bold text-gray-900">EDUGUARD</span>
             </div>
             <p className="text-gray-600 text-sm">Early Academic Risk Detection</p>
           </div>
@@ -228,7 +228,7 @@ const Login = () => {
         <div className="mt-8 bg-blue-50 rounded-lg p-4 border border-blue-200">
           <p className="text-blue-900 text-sm font-semibold mb-2">📝 Demo Credentials:</p>
           <p className="text-blue-700 text-xs mb-1">
-            <strong>Any email</strong> (e.g., student123@acadwatch.edu)
+            <strong>Any email</strong> (e.g., student123@EDUGUARD.edu)
           </p>
           <p className="text-blue-700 text-xs">
             <strong>Password:</strong> password123

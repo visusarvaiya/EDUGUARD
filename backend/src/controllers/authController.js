@@ -33,17 +33,18 @@ const login = async (req, res) => {
 
       // Generate OTP and send email
       const otp = generateOTP();
+      console.log(`\n\n=== DEVELOPMENT OTP FOR ${email} ===\n${otp}\n======================================\n\n`);
       user.otpHash = crypto.createHash('sha256').update(otp).digest('hex');
       user.otpExpiry = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
       await user.save();
 
       const emailHtml = `
-        <h2>AcadWatch Email Verification</h2>
+        <h2>EDUGUARD Email Verification</h2>
         <p>Your one-time password is: <strong>${otp}</strong></p>
         <p>This OTP expires in 10 minutes.</p>
       `;
 
-      await sendEmail(email, 'AcadWatch Email Verification', emailHtml);
+      await sendEmail(email, 'EDUGUARD Email Verification', emailHtml);
 
       return res.status(200).json({
         message: 'User created. Please verify your email with the OTP sent.',
@@ -60,17 +61,18 @@ const login = async (req, res) => {
 
     if (!user.isVerified) {
       const otp = generateOTP();
+      console.log(`\n\n=== DEVELOPMENT OTP FOR ${email} ===\n${otp}\n======================================\n\n`);
       user.otpHash = crypto.createHash('sha256').update(otp).digest('hex');
       user.otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
       await user.save();
 
       const emailHtml = `
-        <h2>AcadWatch Email Verification</h2>
+        <h2>EDUGUARD Email Verification</h2>
         <p>Your one-time password is: <strong>${otp}</strong></p>
         <p>This OTP expires in 10 minutes.</p>
       `;
 
-      await sendEmail(email, 'AcadWatch Email Verification', emailHtml);
+      await sendEmail(email, 'EDUGUARD Email Verification', emailHtml);
 
       return res.status(200).json({
         message: 'OTP sent to your email. Please verify to continue.',
@@ -147,12 +149,12 @@ const forgotPassword = async (req, res) => {
 
     const resetLink = `http://localhost:3000/reset-password?token=${resetToken}&userId=${user._id}`;
     const emailHtml = `
-      <h2>AcadWatch Password Reset</h2>
+      <h2>EDUGUARD Password Reset</h2>
       <p><a href="${resetLink}">Click here to reset your password</a></p>
       <p>This link expires in 1 hour.</p>
     `;
 
-    await sendEmail(email, 'AcadWatch Password Reset', emailHtml);
+    await sendEmail(email, 'EDUGUARD Password Reset', emailHtml);
 
     res.status(200).json({ message: 'Password reset link sent to your email' });
   } catch (error) {

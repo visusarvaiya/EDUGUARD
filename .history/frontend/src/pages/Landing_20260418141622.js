@@ -41,7 +41,7 @@ const Landing = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <GraduationCap className="w-8 h-8 text-indigo-600" />
-            <span className="text-xl font-bold text-gray-900">AcadWatch</span>
+            <span className="text-xl font-bold text-gray-900">EDUGUARD</span>
           </div>
           <button
             onClick={() => navigate('/login')}
@@ -125,7 +125,7 @@ const Landing = () => {
       {/* Who Uses It */}
       <div className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Who Uses AcadWatch</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Who Uses EDUGUARD</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {roles.map((role, idx) => (
               <div
@@ -144,7 +144,7 @@ const Landing = () => {
       {/* Footer */}
       <div className="bg-gray-900 text-white py-8 px-6 text-center">
         <p className="text-gray-400">
-          AcadWatch © 2024 - Hackathon Winning Project for Academic Excellence
+          EDUGUARD © 2024 - Hackathon Winning Project for Academic Excellence
         </p>
       </div>
 

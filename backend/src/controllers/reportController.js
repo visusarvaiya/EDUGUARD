@@ -1,4 +1,4 @@
-const jsPDF = require('jspdf');
+const PDFDocument = require('pdfkit');
 const Student = require('../models/Student');
 const RiskScore = require('../models/RiskScore');
 const Intervention = require('../models/Intervention');
@@ -18,11 +18,17 @@ const generatePDFReport = async (req, res) => {
     const interventions = await Intervention.find({ studentId });
     const academicData = await AcademicData.find({ studentId }).populate('subjectId');
 
-    const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text('AcadWatch Risk Report', 20, 20);
+    const doc = new PDFDocument();
+    
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="report_${studentId}.pdf"`);
+    
+    doc.pipe(res);
 
-    doc.setFontSize(12);
+    doc.fontSize(16);
+    doc.text('EDUGUARD Risk Report', 20, 20);
+
+    doc.fontSize(12);
     doc.text(`Student: ${student.userId.name}`, 20, 40);
     doc.text(`Class: ${student.class}`, 20, 50);
     doc.text(`Department: ${student.department}`, 20, 60);
@@ -36,12 +42,11 @@ const generatePDFReport = async (req, res) => {
 
     doc.text(`Total Interventions: ${interventions.length}`, 20, 130);
 
-    const pdfBuffer = Buffer.from(doc.output('arraybuffer'));
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', `attachment; filename="report_${studentId}.pdf"`);
-    res.send(pdfBuffer);
+    doc.end();
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    if (!res.headersSent) {
+      res.status(500).json({ error: error.message });
+    }
   }
 };
 
@@ -92,7 +97,7 @@ const generateCSVExport = async (req, res) => {
     }
 
     res.setHeader('Content-Type', 'text/csv');
-    res.setHeader('Content-Disposition', 'attachment; filename="acadwatch_report.csv"');
+    res.setHeader('Content-Disposition', 'attachment; filename="EDUGUARD_report.csv"');
     res.send(csv);
   } catch (error) {
     res.status(500).json({ error: error.message });

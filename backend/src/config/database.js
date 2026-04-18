@@ -16,10 +16,13 @@ const mongoConnection = async () => {
 
 const redisClient = redis.createClient({
   url: process.env.REDIS_URL,
+  socket: {
+    reconnectStrategy: false
+  }
 });
 
-redisClient.on('error', (err) => {
-  console.error('❌ Redis Error:', err);
+redisClient.on('error', () => {
+    // Suppress general error logs to avoid spam
 });
 
 const connectRedis = async () => {
@@ -27,7 +30,7 @@ const connectRedis = async () => {
     await redisClient.connect();
     console.log('✅ Redis connected');
   } catch (error) {
-    console.error('❌ Redis connection error:', error);
+    console.error('❌ Redis connection error (Redis features will be disabled or skipped)');
   }
 };
 

@@ -1,7 +1,7 @@
 {
-  "name": "acadwatch-frontend",
+  "name": "EDUGUARD-frontend",
   "version": "1.0.0",
-  "description": "AcadWatch Frontend - Early Academic Risk Detection",
+  "description": "EDUGUARD Frontend - Early Academic Risk Detection",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",

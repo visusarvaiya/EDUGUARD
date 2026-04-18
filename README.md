@@ -2,6 +2,12 @@
 
 A production-quality full-stack web application for universities and colleges to predict, detect, and prevent academic failure through AI-powered risk scoring and intelligent intervention tracking.
 
+
+Student: student@eduguard.com
+Mentor: mentor@eduguard.com
+Teacher: teacher@eduguard.com
+Coordinator: coordinator@eduguard.com
+ password123
 ## 🌟 Features
 
 ### 🎯 Core Capabilities
@@ -143,10 +149,10 @@ All demo users use the same password for easy testing:
 **Password**: `password123`
 
 ### Available Accounts (auto-created on first login):
-- **Student**: `student123@acadwatch.edu` → Goes to `/student/dashboard`
-- **Mentor**: `mentor.computerengineering@acadwatch.edu` → Goes to `/mentor/dashboard`
-- **Teacher**: `teacher1.computerengineering@acadwatch.edu` → Goes to `/teacher/dashboard`
-- **Coordinator**: `coordinator.computerengineering@acadwatch.edu` → Goes to `/coordinator/dashboard`
+- **Student**: `student123@EDUGUARD.edu` → Goes to `/student/dashboard`
+- **Mentor**: `mentor.computerengineering@EDUGUARD.edu` → Goes to `/mentor/dashboard`
+- **Teacher**: `teacher1.computerengineering@EDUGUARD.edu` → Goes to `/teacher/dashboard`
+- **Coordinator**: `coordinator.computerengineering@EDUGUARD.edu` → Goes to `/coordinator/dashboard`
 
 Or create new accounts with any email during first login!
 

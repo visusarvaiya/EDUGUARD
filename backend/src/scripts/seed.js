@@ -53,7 +53,7 @@ async function seedDatabase() {
       // Create 1 coordinator per department
       const coordinator = new User({
         name: `${dept} Coordinator`,
-        email: `coordinator.${dept.toLowerCase().replace(/\s+/g, '')}@acadwatch.edu`,
+        email: dept === 'Computer Engineering' ? 'coordinator@eduguard.com' : `coordinator.${dept.toLowerCase().replace(/\s+/g, '')}@EDUGUARD.edu`,
         passwordHash: 'password123',
         role: 'Academic Coordinator',
         department: dept,
@@ -65,7 +65,7 @@ async function seedDatabase() {
       // Create 1 mentor per department
       const mentor = new User({
         name: `${dept} Mentor`,
-        email: `mentor.${dept.toLowerCase().replace(/\s+/g, '')}@acadwatch.edu`,
+        email: dept === 'Computer Engineering' ? 'mentor@eduguard.com' : `mentor.${dept.toLowerCase().replace(/\s+/g, '')}@EDUGUARD.edu`,
         passwordHash: 'password123',
         role: 'Faculty Mentor',
         department: dept,
@@ -78,7 +78,7 @@ async function seedDatabase() {
       for (let i = 0; i < 3; i++) {
         const teacher = new User({
           name: `Teacher ${i + 1} - ${dept}`,
-          email: `teacher${i + 1}.${dept.toLowerCase().replace(/\s+/g, '')}@acadwatch.edu`,
+          email: (dept === 'Computer Engineering' && i === 0) ? 'teacher@eduguard.com' : `teacher${i + 1}.${dept.toLowerCase().replace(/\s+/g, '')}@EDUGUARD.edu`,
           passwordHash: 'password123',
           role: 'Subject Teacher',
           department: dept,
@@ -131,7 +131,7 @@ async function seedDatabase() {
         for (let i = 0; i < 30; i++) {
           const user = new User({
             name: `Student ${studentIdCounter}`,
-            email: `student${studentIdCounter}@acadwatch.edu`,
+            email: (dept === 'Computer Engineering' && semester === 1 && i === 0) ? 'student@eduguard.com' : `student${studentIdCounter}@EDUGUARD.edu`,
             passwordHash: 'password123',
             role: 'Student',
             department: dept,
