@@ -1,6 +1,6 @@
 # 🎓 eduguard - Early Academic Risk Detection & Student Intervention Platform
 
-A **hackathon-winning, production-quality full-stack web application** for universities and colleges to predict, detect, and prevent academic failure through AI-powered risk scoring and intelligent intervention tracking.
+A production-quality full-stack web application for universities and colleges to predict, detect, and prevent academic failure through AI-powered risk scoring and intelligent intervention tracking.
 
 ## 🌟 Features
 
